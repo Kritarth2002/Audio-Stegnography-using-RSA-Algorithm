@@ -83,9 +83,13 @@ def encrypt(msg_plaintext, package):
     return msg_ciphertext
 
 
-def decrypt(msg_ciphertext, d , n):
-   
-    msg_plaintext = [chr(pow(c, d, n)) for c in msg_ciphertext]
 
-    return (''.join(msg_plaintext))
+def decrypt(msg_ciphertext, d, n):
+    try:
+        msg_plaintext = [chr(pow(c, d, n)) for c in msg_ciphertext]
+        return ''.join(msg_plaintext)
+    except Exception as e:
+        print(f"Error during decryption: {e}")
+        return None
+
     
